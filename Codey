@@ -1,0 +1,36 @@
+git clone https://github.com/LLK/scratch-gui.git
+cd scratch-gui
+npm install
+const MAX_CLONES = 100000; // Increase the default limit
+const MAX_STEP_ITERATIONS = 500000; // Allow more iterations per step
+npm install mathjs
+const math = require('mathjs');
+
+Blocks.prototype.mathEvaluate = function (args) {
+    return math.evaluate(args.EXPRESSION);
+};
+{
+  opcode: 'mathEvaluate',
+  blockType: Scratch.BlockType.REPORTER,
+  text: 'evaluate [EXPRESSION]',
+  arguments: {
+      EXPRESSION: {
+          type: Scratch.ArgumentType.STRING,
+          defaultValue: '2 * sin(pi / 4)'
+      }
+  }
+}
+const BATCH_SIZE = 5000; // Process blocks in chunks
+
+function executeBatch(blocks) {
+    for (let i = 0; i < blocks.length; i += BATCH_SIZE) {
+        setTimeout(() => {
+            processBlocks(blocks.slice(i, i + BATCH_SIZE));
+        }, 0);
+    }
+}
+<block type="mathEvaluate">
+    <field name="EXPRESSION">x^2 + y^2</field>
+</block>
+npm run build
+npm start
