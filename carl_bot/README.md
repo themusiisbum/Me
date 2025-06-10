@@ -1,22 +1,14 @@
 # Carl Chatbot
 
-This is a simple AI chatbot named **Carl**. It uses the
-[Hugging Face Transformers](https://huggingface.co/transformers/) library to
-generate responses using a text-generation model such as `gpt2`.
+This is a simple AI chatbot named **Carl** implemented entirely with Python's
+standard library. It uses basic pattern matching to generate replies, so no
+machine learning libraries or external APIs are required.
 
 ## Requirements
 
 - Python 3.8+
-- `transformers` library
-- `torch` (required by transformers)
 
-Install dependencies with:
-
-```bash
-pip install transformers torch
-```
-
-Optionally set the `CARL_MODEL` environment variable to choose a different model.
+There are no external dependencies to install.
 
 ## Usage
 
